@@ -8,7 +8,7 @@ After spending some time fiddling with the maze solver problem, I was able to fi
 it still felt magical that it works. The cases where a dead end is found feel tricky to wrap my mind around why the resetting
 of the point to unvisited, works for back tracking. Ultimately this practice was super helpful.
 
-Along with the coding exercise, the discussion post forced me to think of recursive in a more abstract way. Describing an 
+Along with the coding exercise, the discussion post forced me to think of recursion in a more abstract way. Describing an 
 everyday activity recursively helped me better formulate my thinking for how problems can be solved recursively. I kept having
 to rewrite my post because half-way through I would realize my approach was still iteration versus recursion. It finally clicked
 when I reread the directions to break the problem down into a smaller version of itself. Not a series of small problems, just one
