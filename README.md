@@ -9,6 +9,7 @@
   - Get over my fear of linked lists & trees
   - Learn more algorithms to help with Leetcode
   - Write better unit tests
-## In-Class Java Coding Warm Up file
-  - I joined the class a bit late, I am assuming this is from week one.
-  I will talk with Professor Calle the next class to see if I can make this up. 
+## Progress Tracker
+  - [x] Lab Week 2 - Maze Solver (Recursion)
+  - [ ] Lab Week 3 - Sales Analysis (Big O)
+  - [ ] Lab Week 4...
