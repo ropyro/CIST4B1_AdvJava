@@ -16,8 +16,9 @@ public class DataHelper {
         //Record generation
         List<SaleRecord> recordsList = new ArrayList<>();
         for(int i = 0; i < dataSize; i++){
+            //todo: add chance of duplicate id
             recordsList.add(new SaleRecord(
-                    (int) (Math.random()*Math.abs(dataSize-(dataSize/20))),
+                    i + 1,
                     getRandomDate(),
                     (long) (Math.random()*1000000),
                     getRandomProduct()));
@@ -40,6 +41,25 @@ public class DataHelper {
         return file;
     }
 
+    public static void saveResultsToCSV(long[]... results) throws IOException {
+        File file = new File("results.csv");
+        if (!file.exists()) file.createNewFile();
+
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter writer = new BufferedWriter(fw);
+        writer.write("record_count,load_data,retrieve_latest,calculate_total_rev,check_dupes,search_by_id\n");
+        for (long[] result : results) {
+            writer.write(result[0] + "," +
+                    result[1] + "," +
+                    result[2] + "," +
+                    result[3] + "," +
+                    result[4] + "," +
+                    result[5] + "\n");
+        }
+        writer.close();
+        fw.close();
+    }
+
 
     /**
      * Simple random date generator for dates between 1975 -> 2025
@@ -58,7 +78,7 @@ public class DataHelper {
         String[] components = csvLine.split(",");
         int saleId = Integer.parseInt(components[0]);
         LocalDate saleDate = LocalDate.parse(components[1]);
-        long total = Long.parseLong(components[2]);
+        Double total = Double.parseDouble(components[2]);
         return new SaleRecord(saleId, saleDate, total, components[3]);
     }
 

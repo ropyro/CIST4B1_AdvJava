@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # 2) create line graphs for each of the following results
 
-# LINE GRAPHS FOR DATA SETS OF 100 -> 100,000 #
+# LINE GRAPHS FOR DATA SETS OF 100 -> 100,000
 # Loading Sales Data Graph
 # Retrieve the latest sale graph
 # Compute the total revenue graph
