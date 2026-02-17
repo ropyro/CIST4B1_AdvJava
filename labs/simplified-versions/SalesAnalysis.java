@@ -19,7 +19,7 @@ import java.util.Map;
  * 4: Setting up JMH with maven: https://www.youtube.com/watch?v=mmpzodF8J4Y
  * 5: More info on JMH usage: https://www.youtube.com/watch?v=Bi0E7w1ZFFA&t=1688s
  */
-public class Main {
+public class SalesAnalysis {
 
     public static void main(String[] args) throws IOException {
         //This code below warms up the JVM and tells the JIT to take the code seriously
