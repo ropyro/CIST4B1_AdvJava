@@ -41,7 +41,7 @@ public class DataHelper {
         return file;
     }
 
-    public static void saveResultsToCSV(long[]... results) throws IOException {
+    public static File saveResultsToCSV(long[]... results) throws IOException {
         File file = new File("results.csv");
         if (!file.exists()) file.createNewFile();
 
@@ -58,6 +58,7 @@ public class DataHelper {
         }
         writer.close();
         fw.close();
+        return file;
     }
 
 
