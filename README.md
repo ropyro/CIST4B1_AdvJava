@@ -11,5 +11,5 @@
   - Write better unit tests
 ## Progress Tracker
   - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-2-maze-solver">Week 2 - Maze Solver (Recursion)</a>
-  - [ ] Lab Week 3 - Sales Analysis (Big O)
-  - [ ] Lab Week 4...
+  - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-3-sales-analysis">Week 3 - Sales Analysis (Big O)</a>
+  - [ ] Lab Week 4 - Sorting Implementation
