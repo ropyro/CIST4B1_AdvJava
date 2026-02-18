@@ -25,7 +25,8 @@ public class SalesAnalysis {
         //This code below warms up the JVM and tells the JIT to take the code seriously
         //From my understanding, JMH (Java microbenchmark harness) uses a "blackhole" to tell the JIT
         //that the data being passed from a method is needed by actually shoving it somewhere.
-        // This stops the JIT from "optimizing the code away" see source 2 & 5 above
+        //This stops the JIT from "optimizing the code away" see source 2 & 5 above
+        //I attempted to emulate this behavior
         long warmUpBlackHole = 0;
         for (int i = 0; i < 1000; i++) {
             long[] results = runTest(1000, true);
