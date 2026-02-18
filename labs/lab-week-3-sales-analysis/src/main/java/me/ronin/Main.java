@@ -4,8 +4,12 @@ import me.ronin.analysis.SaleRecord;
 import me.ronin.analysis.SalesAnalyzer;
 import me.ronin.utils.DataHelper;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -33,10 +37,19 @@ public class Main {
 
         //Run the tests and save the results to an array
         long[][] results = {
-                runTest(100, true),
-                runTest(1_000, true),
-                runTest(10_000, true),
-                runTest(100_000, true)};
+                runTest(100, true), //required
+                runTest(500, true),
+                runTest(1_000, true), //required
+                runTest(1_500, true),
+                runTest(2500, true),
+                runTest(5000, true),
+                runTest(6000, true),
+                runTest(8500, true),
+                runTest(10_000, true), //required
+                runTest(25_000, true),
+                runTest(50_000, true),
+                runTest(75_000, true),
+                runTest(100_000, true)}; // required
 
         //Print results for all tests for easy reading & comparing in the cli
         printResults(results);
