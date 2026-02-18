@@ -18,7 +18,6 @@ public class SalesAnalyzer {
         this.recordFile = recordFile;
     }
 
-    //TODO: rewrite using non stream methods to be more clear of the big O complexity
     public void loadData() throws IOException {
         FileReader fr = new FileReader(recordFile);
         BufferedReader reader = new BufferedReader(fr);
@@ -28,15 +27,21 @@ public class SalesAnalyzer {
         fr.close();
     }
 
-    //O(N)
+    //O(N) one loop through the array
     public SaleRecord getLatestSale(){
+        //Store current latest starting at the first element in array
         int currentLatestIndex = 0;
+        //Loop through all elements
         for(int i = 1; i < records.size(); i++){
+            //Variable to store current element we are comparing
             SaleRecord currentLatest = records.get(currentLatestIndex);
+            //Check if current from the loop is newer than the one stored
             if(records.get(i).saleDate().isAfter(currentLatest.saleDate())){
+                //Update the latest with new index
                 currentLatestIndex = i;
             }
         }
+        //Return the final latest value
         return records.get(currentLatestIndex);
     }
 

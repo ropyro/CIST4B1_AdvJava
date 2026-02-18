@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * @author roninrichman
  *
- * Full version of my project utilizing JMH for accurate results can be found:
+ * Full version of my project can be found:
  * https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-3-sales-analysis
  *
  * Sources:
@@ -106,6 +106,10 @@ public class SalesAnalysis {
         return results;
     }
 
+    /**
+     * Prints the results of each test
+     * @param results takes in an array of long arrays of the results
+     */
     private static void printResults(long[]... results) {
         for (long[] result : results) {
             System.out.println(
@@ -119,20 +123,32 @@ public class SalesAnalysis {
     }
 }
 
+/**
+ * A record class to store and get data about a specific sale
+ * Recently learned about this class type and have been finding it super useful
+ * @param saleId
+ * @param saleDate
+ * @param total
+ * @param productName
+ */
 record SaleRecord(int saleId, LocalDate saleDate, double total, String productName) {
 }
 
+/**
+ * Class that contains the sales analysis operations
+ */
 class SalesAnalyzer {
 
     private List<SaleRecord> records;
     private File recordFile;
 
+    //Constructor takes in the CSV file to be loaded and initializes the record list
     public SalesAnalyzer(File recordFile) {
         this.records = new ArrayList<>();
         this.recordFile = recordFile;
     }
 
-    //TODO: rewrite using non stream methods to be more clear of the big O complexity
+    //Reads the CSV file using BufferedReader. Source #3 helped guide me to this setup
     public void loadData() throws IOException {
         FileReader fr = new FileReader(recordFile);
         BufferedReader reader = new BufferedReader(fr);
@@ -142,29 +158,38 @@ class SalesAnalyzer {
         fr.close();
     }
 
-    //O(N)
-    public SaleRecord getLatestSale() {
+    // Theoretical time Complexity: O(N)
+    public SaleRecord getLatestSale(){
+        //Store current latest starting at the first element in array
         int currentLatestIndex = 0;
-        for (int i = 1; i < records.size(); i++) {
+        //Loop through all elements
+        for(int i = 1; i < records.size(); i++){
+            //Variable to store current element we are comparing
             SaleRecord currentLatest = records.get(currentLatestIndex);
-            if (records.get(i).saleDate().isAfter(currentLatest.saleDate())) {
+            //Check if current from the loop is newer than the one stored
+            if(records.get(i).saleDate().isAfter(currentLatest.saleDate())){
+                //Update the latest with new index
                 currentLatestIndex = i;
             }
         }
+        //Return the final latest value
         return records.get(currentLatestIndex);
     }
 
-    //O(N)
+    //Theoretical time complexity: O(N)
     public double getTotalRevenue() {
+        //counter variable to increment
         double total = 0;
+        //loops through all the records
         for (SaleRecord record : records) {
+            //increments the counter from each record
             total += record.total();
         }
         return total;
     }
 
     /**
-     * O(n^3) nested loops + contains method requires loop, maybe optimizable with a map?
+     * O(n^3) nested loops + contains method requires a loop
      * The arraylist class contains(obj o) method calls -> indexOf(o) which calls -> indexOfRange(o, start, fin)
      * which utilizes a for loop to check if the object is contained within the range, the range being the entire array
      * as specified by the contains method
@@ -232,7 +257,9 @@ class SalesAnalyzer {
      * @return returns desired record or null if one does not exist with the given id
      */
     public SaleRecord getSaleById(int id) {
+        //loops through all records
         for (SaleRecord record : records) {
+            //returns the first record found to have the id
             if (record.saleId() == id) return record;
         }
         return null;

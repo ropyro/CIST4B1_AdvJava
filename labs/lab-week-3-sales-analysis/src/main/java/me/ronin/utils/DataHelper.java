@@ -47,14 +47,15 @@ public class DataHelper {
 
         FileWriter fw = new FileWriter(file);
         BufferedWriter writer = new BufferedWriter(fw);
-        writer.write("record_count,load_data,retrieve_latest,calculate_total_rev,check_dupes,search_by_id\n");
+        writer.write("record_count,load_data,retrieve_latest,calculate_total_rev,check_dupes_for_loops,check_dupes_hashmap,search_by_id\n");
         for (long[] result : results) {
             writer.write(result[0] + "," +
                     result[1] + "," +
                     result[2] + "," +
                     result[3] + "," +
                     result[4] + "," +
-                    result[5] + "\n");
+                    result[5] + "," +
+                    result[6] + "\n");
         }
         writer.close();
         fw.close();

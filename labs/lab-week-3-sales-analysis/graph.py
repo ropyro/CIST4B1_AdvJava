@@ -43,9 +43,14 @@ plt.title('Calculate Total Revenue Graph')
 plt.savefig('graphs/calculate_total_rev.png')
 plt.close()
 
-sns.lineplot(x="record_count", y="check_dupes", data=data)
-plt.title('Check Duplicates Graph')
-plt.savefig('graphs/check_dupes.png')
+sns.lineplot(x="record_count", y="check_dupes_for_loops", data=data)
+plt.title('Check Duplicates (Nested Loops) Graph')
+plt.savefig('graphs/check_dupes_for_loops.png')
+plt.close()
+
+sns.lineplot(x="record_count", y="check_dupes_hashmap", data=data)
+plt.title('Check Duplicates (Map + Loop) Graph')
+plt.savefig('graphs/check_dupes_hashmap.png')
 plt.close()
 
 sns.lineplot(x="record_count", y="search_by_id", data=data)

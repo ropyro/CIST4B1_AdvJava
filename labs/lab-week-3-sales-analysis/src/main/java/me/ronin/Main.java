@@ -15,11 +15,15 @@ import java.util.List;
 /**
  * @author roninrichman
  * <p>
+ * Full version of my project can be found here:
+ * https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-3-sales-analysis
+ * <p>
  * Sources:
  * 1: LocalDate class help: https://stackoverflow.com/questions/3985392/generate-random-date-of-birth
  * 2: Really interesting video about the JIT and hacky ways to warm up code for benchmarking: https://www.youtube.com/watch?v=7af_QJiLWHI
  * 3: Creating simple CSV file with native jdk utilities: https://stackoverflow.com/questions/19027473/writing-a-csv-file-using-buffered-writer-in-java
  * 4: Setting up JMH with maven: https://www.youtube.com/watch?v=mmpzodF8J4Y
+ * 5: More info on JMH usage: https://www.youtube.com/watch?v=Bi0E7w1ZFFA&t=1688s
  */
 public class Main {
 
@@ -36,25 +40,23 @@ public class Main {
         }
         System.out.println("Warm up complete, this is the bh total (not helpful but needed to be used): " + warmUpBlackHole);
 
-        //Run the tests and save the results to an array
-        long[][] results = {
-                runTest(100, true), //required
-                runTest(500, true),
-                runTest(1_000, true), //required
-                runTest(1_500, true),
-                runTest(2500, true),
-                runTest(5000, true),
-                runTest(6000, true),
-                runTest(8500, true),
-                runTest(10_000, true), //required
-                runTest(25_000, true),
-                runTest(50_000, true),
-                runTest(75_000, true),
-                runTest(100_000, true)}; // required
+        //Run the tests and save the results to a 2d array
+        long[][] results = runTests(true,
+                100, 500, 1_000, 1_500, 2500, 5000, 8500, 10_000, 25_000, 50_000, 75_000, 100_000);
 
+        //Save the results to a CSV for graph generation
+        DataHelper.saveResultsToCSV(results);
         //Print results for all tests for easy reading & comparing in the cli
         printResults(results);
-        DataHelper.saveResultsToCSV(results);
+
+    }
+
+    private static long[][] runTests(boolean verbosity, int... recordCounts) throws IOException {
+        long[][] results = new long[recordCounts.length][];
+        for (int i = 0; i < recordCounts.length; i++) {
+            results[i] = runTest(recordCounts[i], verbosity);
+        }
+        return results;
     }
 
     private static long[] runTest(int recordCount, boolean verbose) throws IOException {
@@ -67,7 +69,7 @@ public class Main {
         //Start and end time tracking variables
         long start = 0;
         long end = 0;
-        long[] results = new long[6];
+        long[] results = new long[7];
         results[0] = recordCount;
 
         //Test 1: loading data from csv
@@ -96,23 +98,36 @@ public class Main {
         if (verbose) System.out.println("test completed in: " + (end - start) + " nano seconds \n");
         results[3] = (end - start);
 
-        //Test 4: check for duplicate sale ids
+        //Test 4: check for duplicate sale ids (nested loops)
+        //skip for datasets larger than 50000
+        results[4] = 0;
+        if (recordCount <= 100_000) {
+            if (verbose) System.out.println("test: nested loop dupe check");
+            start = System.nanoTime();
+            var dupes = salesAnalyzer.getDuplicatesViaNestedLoops();
+            end = System.nanoTime();
+            if (verbose) System.out.println("# of dupes found: " + dupes.size());
+            if (verbose) System.out.println("test completed in: " + (end - start) + " nano seconds \n");
+            results[4] = (end - start);
+        }
+
+        //Test 5: check for duplicate sale ids (map + loop)
         if (verbose) System.out.println("test: hash map dupe check");
         start = System.nanoTime();
-        var dupes = salesAnalyzer.getDuplicatesViaMap();
+        var dupes2 = salesAnalyzer.getDuplicatesViaMap();
         end = System.nanoTime();
-        if (verbose) System.out.println("# of dupes found: " + dupes.size());
+        if (verbose) System.out.println("# of dupes found: " + dupes2.size());
         if (verbose) System.out.println("test completed in: " + (end - start) + " nano seconds \n");
-        results[4] = (end - start);
+        results[5] = (end - start);
 
-        //Test 5: search for sale by its id
+        //Test 6: search for sale by its id
         if (verbose) System.out.println("test: search for sale by id (id to be checked is 1)");
         start = System.nanoTime();
         SaleRecord saleById = salesAnalyzer.getSaleById(100);
         end = System.nanoTime();
         if (verbose) if (saleById != null) System.out.println("Product of sale with id 1 " + saleById.productName());
         if (verbose) System.out.println("test completed in: " + (end - start) + " nano seconds \n");
-        results[5] = (end - start);
+        results[6] = (end - start);
 
         return results;
     }
@@ -124,8 +139,9 @@ public class Main {
                             "Loading data:  " + result[1] + " " +
                             "Retrieve latest sale:  " + result[2] + " " +
                             "Calculate Total Revenue:  " + result[3] + " " +
-                            "Check for duplicates:  " + result[4] + " " +
-                            "Search for sale by id:  " + result[5] + "\n");
+                            "Check for duplicates (nested loops):  " + result[4] + " " +
+                            "Check for duplicates (map + loop):  " + result[5] + " " +
+                            "Search for sale by id:  " + result[6] + "\n");
         }
     }
 }
