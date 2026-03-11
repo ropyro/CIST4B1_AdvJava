@@ -11,7 +11,7 @@ public class LinkedListStack<T> {
 
     }
 
-    public void insert(T data) {
+    public void push(T data) {
         Node<T> newNode = new Node<>(data);
         newNode.next = this.head;
         this.head = newNode;
@@ -19,7 +19,8 @@ public class LinkedListStack<T> {
     }
 
     public T pop(){
-        if(this.isEmpty()){
+        if(this.head == null){
+            System.out.println("Could not pop, head is null");
             return null;
         }
         T data = this.head.data;
@@ -36,7 +37,7 @@ public class LinkedListStack<T> {
     }
 
     public boolean isEmpty() {
-        return length == 0;
+        return this.head == null;
     }
 }
 
