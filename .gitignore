@@ -52,5 +52,5 @@ env/
 .env/
 
 ### Outputs ###
-results.csv
+homework/Week 4/results.csv
 *.png
