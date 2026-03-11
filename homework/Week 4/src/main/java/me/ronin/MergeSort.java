@@ -1,7 +1,7 @@
 package me.ronin;
 
 public class MergeSort {
-    public static void mergeSort(int[] arr){
+    public static void sort(int[] arr){
         //base case
         if(arr.length <= 1) return;
 
@@ -22,8 +22,8 @@ public class MergeSort {
         }
 
         //recursive case
-        mergeSort(left);
-        mergeSort(right);
+        sort(left);
+        sort(right);
 
         //conquer
         int l = 0, r = 0;
