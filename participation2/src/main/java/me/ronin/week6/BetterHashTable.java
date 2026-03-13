@@ -1,11 +1,11 @@
 package me.ronin.week6;
 
-public class BasicHashTable {
+public class BetterHashTable<K, V>{
 
     private HTEntry[] table;
     private int size;
 
-    public BasicHashTable(int capacity) {
+    public BetterHashTable(int capacity) {
         table = new HTEntry[capacity];
         this.size = 0;
     }
@@ -94,7 +94,7 @@ public class BasicHashTable {
             index = ++index % table.length;
 
             if(index == startIndex) {
-                 break;
+                break;
             }
         }
         //if no key found, fail
