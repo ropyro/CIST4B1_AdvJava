@@ -12,4 +12,6 @@
 ## Progress Tracker
   - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-2-maze-solver">Week 2 - Maze Solver (Recursion)</a>
   - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-3-sales-analysis">Week 3 - Sales Analysis (Big O)</a>
-  - [ ] Lab Week 4 - Sorting Implementation
+  - [X] Week 4 - Merge Sort Implementation
+  - [X] Week 5 & 6 - Restaurant Simulation
+  - [ ] Week 8 & 9 - Zoo Manager
