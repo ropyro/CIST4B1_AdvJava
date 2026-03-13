@@ -1,6 +1,6 @@
-package me.ronin.backofhouse.orders;
+package me.ronin.kitchen.orders;
 
-import me.ronin.frontofhouse.menu.MenuItem;
+import me.ronin.menu.MenuItem;
 
 public class DineInOrder extends Order{
 
@@ -13,10 +13,14 @@ public class DineInOrder extends Order{
 
     @Override
     public double getTotal(){
-        return super.getTotal() + getEstimatedTip();
+        return super.getTotal() + getTip();
     }
 
-    private double getEstimatedTip(){
-        return super.getTotal() * 1.2;
+    public double getTip(){
+        return super.getTotal() * (0.05 + Math.random() * 0.25);
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
     }
 }

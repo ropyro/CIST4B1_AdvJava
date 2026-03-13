@@ -1,4 +1,4 @@
-package me.ronin.frontofhouse.menu;
+package me.ronin.menu;
 
 public class Menu {
 

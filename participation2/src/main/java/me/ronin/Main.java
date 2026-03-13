@@ -1,6 +1,8 @@
 package me.ronin;
 
 import me.ronin.week5.Patient;
+import me.ronin.week6.BasicHashTable;
+
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -8,22 +10,25 @@ public class Main {
 
 
     public static void main(String[] args) {
-        PriorityQueue<Patient> pq = new PriorityQueue<>();
-        Scanner scanner = new Scanner(System.in);
-        for(int i = 0; i < 3; i++){
-            System.out.println("Enter patient " + i + "'s name: ");
-            String name = scanner.next();
+//        PriorityQueue<Patient> pq = new PriorityQueue<>();
+//        Scanner scanner = new Scanner(System.in);
+//        for(int i = 0; i < 3; i++){
+//            System.out.println("Enter patient " + i + "'s name: ");
+//            String name = scanner.next();
+//
+//            System.out.println("Enter patient " + i + "'s priority: ");
+//            int priority = Integer.parseInt(scanner.next());
+//            pq.offer(new Patient(name, priority));
+//        }
+//
+//        System.out.println("\ntriage order: ");
+//        for(int i = 0; i < 3; i++){
+//            Patient curr = pq.poll();
+//            System.out.println("#" + i + " " + curr.name);
+//        }
 
-            System.out.println("Enter patient " + i + "'s priority: ");
-            int priority = Integer.parseInt(scanner.next());
-            pq.offer(new Patient(name, priority));
-        }
-
-        System.out.println("\ntriage order: ");
-        for(int i = 0; i < 3; i++){
-            Patient curr = pq.poll();
-            System.out.println("#" + i + " " + curr.name);
-        }
+        var table = new BasicHashTable(10);
+        table.put("test", "DELETED");
     }
 
 

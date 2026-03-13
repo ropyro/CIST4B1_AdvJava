@@ -1,6 +1,6 @@
-package me.ronin.frontofhouse;
+package me.ronin;
 
-import me.ronin.backofhouse.orders.Order;
+import me.ronin.kitchen.orders.Order;
 
 public class Customer {
 
@@ -9,7 +9,6 @@ public class Customer {
     public Customer(Order order){
         this.order = order;
     }
-
     public Order getOrder(){
         return this.order;
     }

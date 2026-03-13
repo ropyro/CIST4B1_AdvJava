@@ -1,8 +1,8 @@
-package me.ronin.backofhouse.orders;
+package me.ronin.kitchen.orders;
 
 import me.ronin.datastructures.Stack;
-import me.ronin.backofhouse.PrepStep;
-import me.ronin.frontofhouse.menu.MenuItem;
+import me.ronin.kitchen.PrepStep;
+import me.ronin.menu.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;

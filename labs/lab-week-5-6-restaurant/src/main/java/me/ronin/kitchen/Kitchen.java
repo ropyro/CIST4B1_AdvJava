@@ -1,15 +1,15 @@
-package me.ronin.backofhouse;
+package me.ronin.kitchen;
 
 import me.ronin.datastructures.Stack;
-import me.ronin.frontofhouse.menu.MenuItem;
-import me.ronin.frontofhouse.Customer;
-import me.ronin.frontofhouse.Restaurant;
+import me.ronin.menu.MenuItem;
+import me.ronin.Customer;
+import me.ronin.Restaurant;
 import me.ronin.datastructures.SinglelyLinkedList;
-import me.ronin.backofhouse.orders.Order;
+import me.ronin.kitchen.orders.Order;
 
 public class Kitchen {
 
-    private static final int CONCURRENT_ORDER_LIMIT = 3;
+    private final int concurrentOrderLimit = 3;
 
     private Restaurant restaurant;
     public SinglelyLinkedList<Order> activeOrders;
@@ -20,16 +20,15 @@ public class Kitchen {
     }
 
     public void processTimeStep(){
-        //Move the next waiting order from the queue into the active kitchen linked list
         if(restaurant.waitingCustomers.size() > 0){
-            if(activeOrders.length < CONCURRENT_ORDER_LIMIT){
+            if(activeOrders.length < concurrentOrderLimit){
                 Customer nextInLine = restaurant.waitingCustomers.dequeue();
                 Order nextOrder = nextInLine.getOrder();
                 fireOrder(nextOrder);
                 System.out.println("Fired order #" + nextOrder.getOrderNumb());
                 printOrderDetails(nextOrder);
             }else{
-                System.out.println("Kitchen orders at capacity waiting before firing more orders...");
+                System.out.println("Kitchen orders at capacity (" + activeOrders.length + "/"+ concurrentOrderLimit + ") waiting before firing more orders...");
             }
         }
 
@@ -46,7 +45,6 @@ public class Kitchen {
                 curr.markComplete();
                 restaurant.completeOrder(curr);
                 activeOrders.removeValue(curr);
-                System.out.println("Completed order #" + curr.getOrderNumb() + " Total completed orders now: " + restaurant.getCompletedCount());
             }
         }else{
             System.out.println("Kitchen is waiting for orders...");
