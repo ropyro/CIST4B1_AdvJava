@@ -2,7 +2,7 @@
 > A repository to document my Java learning journey; exploring Data Structures and Algorithms in more depth. 
 
 ## About Me
-  - My name is Ronin Richman and I am a second year student at WVC.
+  - My name is Ronin and I am a second year student at WVC.
   - Although it is a tough uphill battle, I love learning to code.
   - In my freetime I bake lots of bread & go on hikes with my loved ones.
 ## Goals for This Course
