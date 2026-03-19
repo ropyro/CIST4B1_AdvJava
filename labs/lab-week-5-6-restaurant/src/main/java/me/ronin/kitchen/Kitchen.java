@@ -25,7 +25,7 @@ public class Kitchen {
                 Customer nextInLine = restaurant.waitingCustomers.dequeue();
                 Order nextOrder = nextInLine.getOrder();
                 fireOrder(nextOrder);
-                System.out.println("Fired order #" + nextOrder.getOrderNumb());
+                System.out.println("Fired order: #" + nextOrder.getOrderNumb());
                 printOrderDetails(nextOrder);
             }else{
                 System.out.println("Kitchen orders at capacity (" + activeOrders.length + "/"+ concurrentOrderLimit + ") waiting before firing more orders...");
@@ -34,7 +34,7 @@ public class Kitchen {
 
         if(!activeOrders.isEmpty()){
             Order curr = activeOrders.head.data;
-            System.out.println("Current Order: #" + curr.getOrderNumb());
+            System.out.println("Working on Order: #" + curr.getOrderNumb());
             printOrderDetails(curr);
             Stack<PrepStep> prepSteps = curr.getPrepSteps();
             if(!prepSteps.isEmpty()){

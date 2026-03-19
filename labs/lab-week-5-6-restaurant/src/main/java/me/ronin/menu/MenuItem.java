@@ -29,9 +29,6 @@ public class MenuItem {
     }
 
 
-    /*
-     * Menu items
-     */
     static class FountainSoda extends MenuItem {
         public FountainSoda() {
             super("Fountain Soda", 3.50f, new PrepStep("Pour the soda"));

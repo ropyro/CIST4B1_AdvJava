@@ -1,4 +1,4 @@
-package me.ronin.week5;
+package me.ronin.datastructures;
 
 public class NodePQ<T> {
     public T data;

@@ -1,6 +1,4 @@
-package me.ronin.week5;
-
-import java.util.Stack;
+package me.ronin.datastructures;
 
 public class SinglelyLinkedList<T> {
 

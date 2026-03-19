@@ -1,4 +1,4 @@
-package me.ronin.week6;
+package me.ronin.datastructures.hashtable;
 
 public class HTEntry {
 
