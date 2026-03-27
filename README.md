@@ -12,6 +12,7 @@
 ## Progress Tracker
   - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-2-maze-solver">Week 2 - Maze Solver (Recursion)</a>
   - [x] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-3-sales-analysis">Week 3 - Sales Analysis (Big O)</a>
-  - [X] Week 4 - Merge Sort Implementation
-  - [X] Week 5 & 6 - Restaurant Simulation
-  - [ ] Week 8 & 9 - Zoo Manager
+  - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/blob/main/homework/Week%204/src/main/java/me/ronin/MergeSort.java">Week 4 - Merge Sort Implementation</a>
+  - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-5-6-restaurant">Week 5 & 6 - Restaurant Simulation</a>
+  - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-8-9-animal-care">Week 8 & 9 - Zoo Manager</a>
+  - [X] <a href="https://github.com/ropyro/MysticBrews">Midterm Project - Mystic Brews</a>
