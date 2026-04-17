@@ -46,6 +46,7 @@ build/
 __pycache__/
 *.py[cod]
 *$py.class
+path/
 venv/
 .venv/
 env/

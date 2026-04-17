@@ -10,8 +10,8 @@ public class DoubleHashTable {
 
     public DoubleHashTable(int capacity) {
         table = new HTEntry[capacity];
-        size = 0;
-        loadFactor = 0;
+        size = 0;        loadFactor = 0;
+
     }
 
     //Adds value of each character to make the hash of the key
