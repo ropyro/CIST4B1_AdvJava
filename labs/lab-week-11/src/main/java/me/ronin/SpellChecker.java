@@ -23,6 +23,9 @@ public class SpellChecker {
         try{
             InputStreamReader isr = new InputStreamReader(dictionaryStream);
             BufferedReader br = new BufferedReader(isr);
+            //Iterate through each line, and add each word to the dictionary
+            //Project requirements detail that the dictionary file will be one word per line
+            //Since this would never be input by a user, less error handling is required
             br.lines().forEach(line -> dictionary.add(line.toLowerCase()));
             br.close();
             isr.close();
@@ -40,15 +43,22 @@ public class SpellChecker {
             System.err.println("Error: input text not found");
             return null;
         }
+
         Set<String> misspelledWords = new HashSet<>();
 
         try{
             InputStreamReader messageStreamReader = new InputStreamReader(inputStream);
             BufferedReader br = new BufferedReader(messageStreamReader);
+            //Iterate through each line of the file
             br.lines().forEach(line -> {
+                //Split the line by the spaces to isolate individual words
+                //TODO: write a regular expression to remove punctuation
                 String[] words = line.toLowerCase().split(" ");
+                //Iterate through words in the line
                 for(String word : words){
+                    //Check if the word does NOT exist in the tree (aka it is misspelled)
                     if(!dictionary.searchRecursive(word)){
+                        //add misspelled word to the set
                         misspelledWords.add(word);
                     }
                 }
