@@ -16,3 +16,4 @@
   - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-5-6-restaurant">Week 5 & 6 - Restaurant Simulation</a>
   - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-8-9-animal-care">Week 8 & 9 - Zoo Manager</a>
   - [X] <a href="https://github.com/ropyro/MysticBrews">Midterm Project - Mystic Brews</a>
+  - [X] <a href="https://github.com/ropyro/CIST4B1_AdvJava/tree/main/labs/lab-week-11">Week 11 - AVLTree Spellcheck</a>
