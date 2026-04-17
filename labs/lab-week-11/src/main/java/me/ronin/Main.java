@@ -1,6 +1,5 @@
 package me.ronin;
 
-import java.io.*;
 import java.util.Set;
 
 
@@ -9,7 +8,7 @@ import java.util.Set;
 //AVLTree implementation help to make it generic: https://www.youtube.com/watch?v=Jj9Mit24CWk
 // ^ I did not copy it verbatim, but I did use the logic for specifying a comparable generic
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         SpellChecker spellChecker = new SpellChecker();
 
         System.out.println("Dictionary Tree: ");

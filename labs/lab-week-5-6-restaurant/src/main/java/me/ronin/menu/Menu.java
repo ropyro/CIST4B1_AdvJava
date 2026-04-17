@@ -1,7 +1,6 @@
 package me.ronin.menu;
 
 public class Menu {
-
     private static MenuItem[] menu;
 
     public static MenuItem[] items() {

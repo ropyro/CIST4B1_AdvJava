@@ -35,25 +35,29 @@ public class SpellChecker {
         dictionary.inorder();
     }
 
-    public Set<String> spellCheck(InputStream inputStream) throws IOException {
+    public Set<String> spellCheck(InputStream inputStream) {
         if(inputStream == null) {
             System.err.println("Error: input text not found");
             return null;
         }
         Set<String> misspelledWords = new HashSet<>();
 
-        InputStreamReader messageStreamReader = new InputStreamReader(inputStream);
-        BufferedReader br = new BufferedReader(messageStreamReader);
-        br.lines().forEach(line -> {
-            String[] words = line.toLowerCase().split(" ");
-            for(String word : words){
-                if(!dictionary.searchRecursive(word)){
-                    misspelledWords.add(word);
+        try{
+            InputStreamReader messageStreamReader = new InputStreamReader(inputStream);
+            BufferedReader br = new BufferedReader(messageStreamReader);
+            br.lines().forEach(line -> {
+                String[] words = line.toLowerCase().split(" ");
+                for(String word : words){
+                    if(!dictionary.searchRecursive(word)){
+                        misspelledWords.add(word);
+                    }
                 }
-            }
-        });
-        br.close();
-        messageStreamReader.close();
+            });
+            br.close();
+            messageStreamReader.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return misspelledWords;
     }
