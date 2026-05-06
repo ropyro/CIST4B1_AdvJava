@@ -19,6 +19,7 @@ public class SpellChecker {
         InputStream dictionaryStream = SpellChecker.class.getResourceAsStream("/dictionary.txt");
         if(dictionaryStream == null){
             System.err.println("Error: dictionary.text not found");
+            return;
         }
         try{
             InputStreamReader isr = new InputStreamReader(dictionaryStream);

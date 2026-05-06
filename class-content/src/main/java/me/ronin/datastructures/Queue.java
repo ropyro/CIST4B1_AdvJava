@@ -38,4 +38,8 @@ public class Queue<T> {
             return retValue;
         }
     }
+
+    public boolean isEmpty(){
+        return size > 0;
+    }
 }

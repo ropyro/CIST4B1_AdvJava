@@ -3,11 +3,9 @@ package me.ronin.datastructures;
 public class AVLTree {
 
     public Node root;
-    private int height;
 
     public AVLTree() {
         this.root = null;
-        height = 0;
     }
 
     // ---- ADD ----
